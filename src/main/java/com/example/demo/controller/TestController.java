@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/")
 public class TestController {
@@ -18,7 +20,9 @@ public class TestController {
     }
 
     @GetMapping("/test")
-    public void processRequest(@RequestParam("id") String id){
-
+    public void processRequest(@RequestParam("name") String name){
+        String id = UUID.randomUUID().toString();
+        System.out.printf("request id = %s", id);
+        map.addElement(id, name);
     }
 }
